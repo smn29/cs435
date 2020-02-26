@@ -1,8 +1,8 @@
 import java.util.*
 import java.util.ArrayList
+//consulted GeekforGeeks as reference
 
 public class sort(ArrayList<Integer> lst){
-
 	int size = lst.size();
 	for(int i = 1; i < size; i++){
 		int check = arr[i]; 
@@ -15,9 +15,7 @@ public class sort(ArrayList<Integer> lst){
 		} 
 		arr[j+1] = check; 
 	}
-
     for(int x = 0; x < size; x++){
 		System.out.print(lst[x] + ", ");
 	}
-
 }
