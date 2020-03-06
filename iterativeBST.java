@@ -22,7 +22,7 @@ class Node{
 }
 
 public class iterativeBST{
-
+	Node root;
 	//insertIter method
 	static Node insertIter(Node root, int n){
 		Node rt = root;
@@ -31,7 +31,7 @@ public class iterativeBST{
 		//If (empty root)
 		if(rt == null){
 			//Set root equal to the inserted node
-			rt = new_node(n);
+			rt = newnode;
 		}
 
 		//else if no left child
@@ -51,32 +51,31 @@ public class iterativeBST{
 			//while it's not null
 			while(! (rt == null)){
 				//if n is less than root
-				if(n < rt.el){
+				if(n.el < rt.el){
 					if(rt.left != null){
 						//change node to be left child
-						rt = rt.left;
+						rt.left = newnode.el;
 					}
 
 					else{
 						//change root to new node to look at
-						rt = newnode;
+						rt = rt.left;
 					}
 				}
 
 				else{
 					if(rt.right != null){
 						//change node to be right child
-						rt = rt.right;
+						rt.right = newnode.el;
 					}
 
 					else{
 						//change root to new node to look at
-						rt = newnode;
+						rt = rt.right;
 					}
 				}
 			}
 		}
-
 	}
 
 	//deleteIter method
@@ -124,19 +123,19 @@ public class iterativeBST{
 		//Else if (only left child)
 		else if(rt.right == null){
 			//Copy left child as root
-			rt.el = rt.left.el;
+			rt = rt.left;
 		}
 
 		//Else
 		else{
 			//Copy right child as root
-			rt.el = rt.right.el;
+			rt = rt.right;
 		}
 
 	}
 
 	//findNextIter method
-	static Node findNextIter(Node root){
+	static Node findNextIter(Node n){
 		int next = 0;
 		int max = 0;
 		Node rt = root;
@@ -155,20 +154,20 @@ public class iterativeBST{
 		//Else
 		else{
 			//While (right child exists)
-			while(!(rt.right == null)){
+			while(!(n.right == null)){
 				//Set next equal to maximum
 				max = next;
 				//Set maximum equal to right child
-				next = rt.right.el;
-				rt = rt.right;
+				next = n.right.el;
+				n = n.right;
 			}
-			//Return next
-			return next;
+		//Return next
+		return next;
 		}
 	}
 
 	//findPrevIter method
-	static Node findPrevIter(Node root){
+	static Node findPrevIter(Node n){
 		int prev = 0;
 		int min = 0;
 		Node rt = root;
@@ -187,20 +186,20 @@ public class iterativeBST{
 		//Else
 		else{
 			//While (left child exists)
-			while(!(rt.left == null)){
+			while(!(n.left == null)){
 				//Set next equal to minimum 
 				prev = min;
 				//Set minimum equal to right child
-				min = rt.left.el;
-				rt = rt.left;
+				min = n.left.el;
+				n = n.left;
 			}
-			//Return prev
-			return prev;
+		//Return prev
+		return prev;
 		}
 	}
 
 	//findMinIter method
-	static Node findMinIter(Node root){
+	static Node findMinIter(){
 		int min = 0;
 		Node rt = root;
 		//If (empty tree)
@@ -208,14 +207,12 @@ public class iterativeBST{
 			//Return null
 			return null;
 		}
-
 		//Else if (no children)
 		else if(rt.left == null && rt.right == null){
 			//Return root
 			min = rt.el;
 			return min;
 		}
-
 		//Else
 		else{
 			//While (left child exists)
@@ -224,13 +221,13 @@ public class iterativeBST{
 				min = rt.left.el;
 				rt = rt.left;
 			}
-			//Return min
-			return min;
+		//Return min
+		return min;
 		}
 	}
 
 	//findMaxIter method
-	static Node findMaxIter(Node root){
+	static Node findMaxIter(){
 		int max = 0;
 		Node rt = root;
 		//If (empty tree)
