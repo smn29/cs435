@@ -209,3 +209,8 @@ public class recursiveBST{
 		return max;
 		}
 	}
+/* 8. Look at findNextRec and findMaxRec, notice anything? */
+/* 9. Look at findMinRec and findMinRe, notice anything? */ 
+/* 10. Great job getting it done, but you did a lot of 
+extra work that wasn't necessary, you can call functions to be used in other functions to lower
+the amount of lines you write */ 
