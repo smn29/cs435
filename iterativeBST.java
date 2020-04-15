@@ -257,3 +257,11 @@ public class iterativeBST{
 	}
 
 }
+
+/*5. Okay, so something you should probably know, findPrev is supposed to call findMin in order to do its job. 
+Read the code in findMin and read findPrev, notice anything similar? */
+
+/*6. findNextIter is supposed to use findMaxIter to do its job. Read the code in findMax and findNextIter? Notice anything similar? 
+
+/*7. You write a lot of redundant code, and its an impressive show of fortitude, just remember. . . 
+If What you can do in 200 lines you can do in 50? Choose 50!*/
