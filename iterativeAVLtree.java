@@ -813,3 +813,13 @@ class iterativeAVLTree{
 		}
 	}
 }
+/*2. Reading this code. . . Oh lordy lord. . . So, to start try to keep your
+variable names meaningful and consistent. If 'el' is element for short, would it not be more apt to name it 'val'? */
+
+/*3. So, you did one thing that I have to be blunt with. . . .You didn't create a right or left rotation function, but constantly 
+did right and left rotation implementations in each function that they were needed instead of calling a function.*/
+
+/*4 Don't do in 800 lines what you can do in  200, I respect your fortitude, however. */
+
+/*5 Might not be best to cite geeksforgeeks as a source if you aren't going to comment what you got from it, kind of like MLA 
+format in an essay, does that make sense?*/
