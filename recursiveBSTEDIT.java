@@ -82,19 +82,12 @@ public class recursiveBST{
 		}
 
 		else{
-			//While (left child exists)
-			while(!(n.right == null)){
-				//if no children
-				if(n.right.right == null){
-					max = next;
-					//set max to value
-					next = n.right.el;
-				}
-				else{
-					next = n.right.el;
-				}
-				//recursviely call minimum
-				findNextRec(n.right);
+			if(!(n.right == null)){
+				n = n.right;
+				findNextRec(n);
+			}
+			else{
+				next = n.data;
 			}
 		}
 		return next;
@@ -111,22 +104,15 @@ public class recursiveBST{
 		}
 
 		else{
-			//While (left child exists)
-			while(!(n.left == null)){
-				//if no children
-				if(n.left.left == null){
-					//set min to value
-					prev = min;
-					min = n.left.el
-					}
-				else{
-					prev = n.left.el;
-					}
-				//recursviely call minimum
-				findPrevRec(n.left);
+			if(!(n.left == null)){
+				n = n.left;
+				findPrevRec(n);
 				}
-			return prev;
+			else{
+				prev = n.data;
+			}
 		}
+		return prev;
 	}
 
 	public static Node findMinRec(){
@@ -138,22 +124,16 @@ public class recursiveBST{
 			return null;
 		}
 		else{
-			//While (left child exists)
-			while(!(rt.left == null)){
-				//if no children
-				if(rt.left.left == null){
-					//set min to value
-					min = rt.left.el;
-				}
-				else{
-					min = rt.left.el;
-				}
-				//recursviely call minimum
-				findMinRec(rt.left);
+			if(!(rt.left == null)){
+				rt = rt.left;
+				findMinRec(rt);
+			}
+			else{
+				min = rt.data;
 			}
 		}
 		return min;
-		}
+	}
 
 	public static Node findMaxRec(Node root){
 		int max = 0;
@@ -165,18 +145,12 @@ public class recursiveBST{
 		}
 
 		else{
-			//While (left child exists)
-			while(!(rt.right == null)){
-				//if no children
-				if(rt.right.right == null){
-					//set max to value
-					max = rt.right.el;
-				}
-				else{
-					max = rt.right.el;
-				}
-				//recursviely call minimum
+			if(!(rt.right == null)){
+				rt = rt.right;
 				findMaxRec(rt.right);
+			}
+			else{
+				max = rt.data;
 			}
 		}
 		return max;
