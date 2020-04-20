@@ -62,7 +62,8 @@ public class iterativeBST{
 	//deleteIter method
 	public static Node deleteIter(Node root, int n){
 		Node rt = root;
-
+		Node newnode = new_node(n);
+		
 		while(!(rt == null)){
 			if(n < rt.el){
 				if(rt.left != null){
