@@ -1,25 +1,5 @@
-import java.util.*
+import java.util.*;
 //consulted GeekforGeeks as references
-// I wrote out the node class and methods because I wasn't sure if I had to include them or not
-class Node{
-	//node method
-	static class Node {
-		int el;
-		Node right;
-		Node left;
-	}
-	
-	//making a new node method
-	static class new_node(int val){
-		int newnode = new Node();
-		
-		newnode.el = val;
-		newnode.right = null;
-		newnode.left = null;
-		
-		return newnode
-	}
-}
 
 public class iterativeBST{
 	Node root;
