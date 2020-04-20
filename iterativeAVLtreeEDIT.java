@@ -27,6 +27,84 @@ class Node{
 class iterativeAVLTree{
 	int bal;
 	Node root;
+	//left rotation helper method
+	static Node leftRotationHelper(Node n){
+		Node temp1 = n.left;
+		Node temp2 = n.right;
+		temp2.left = n;
+		n.right = temp1;
+
+		if(n.left == null && n.right == null){
+			n.height = 0;
+		}
+		else if(n.left == null){
+			n.height = n.right.height + 1;
+		}
+		else if(n.right == null){
+			n.height = n.left.height + 1;
+		}
+		else if(n.left > n.right){
+			n.height = (n.left.height - n.right.height) + 1;
+		}
+		else{
+			n.height = (n.left.height - n.right.height) + 1;
+		}
+
+		if(temp1.left == null && temp1.right == null){
+			temp1.height = 0;
+		}
+		else if(temp1.left == null){
+			temp1.height = temp1.right.height + 1;
+		}
+		else if(temp1.right == null){
+			temp1.height = temp1.left.height + 1;
+		}
+		else if(temp1.left > temp1.right){
+			temp1.height = (temp1.left.height - temp1.right.height) + 1;
+		}
+		else{
+			temp1.height = (temp1.right.height - temp1.left.height) + 1;
+		}
+	}
+	//right rotation helper method
+	static Node rightRotationHelper(Node n){
+		Node temp3 = n.left;
+		Node temp4 = n.right;
+		temp3.right = n;
+		n.left = temp4;
+
+		if(n.left == null && n.right == null){
+			n.height = 0;
+		}
+		else if(n.left == null){
+			n.height = n.right.height + 1;
+		}
+		else if(n.right == null){
+			n.height = n.left.height + 1;
+		}
+		else if(n.left > n.right){
+			n.height = (n.left.height - n.right.height) + 1;
+		}
+		else{
+			n.height = (n.left.height - n.right.height) + 1;
+		}
+
+		if(temp3.left == null && temp3.right == null){
+			t1.height = 0;
+		}
+		else if(temp3.left == null){
+			temp3.height = temp3.right.height + 1;
+		}
+		else if(temp3.right == null){
+			temp3.height = temp3.left.height + 1;
+		}
+		else if(temp3.left > temp3.right){
+			temp3.height = (temp3.left.height - temp3.right.height) + 1;
+		}
+		else{
+			temp3.height = (temp3.right.height - temp3.left.height) + 1;
+		}
+	}
 	
 	static Node insertIter(Node n, int d){
 		if(n == null){
@@ -90,276 +168,27 @@ class iterativeAVLTree{
 		//Right Right
 		if(bal < -1 && d > n.right.data){
 			//left rotation
-			Node temp1 = n.left;
-			Node temp2 = n.right;
-			temp2.left = n;
-			n.right = temp1;
-			
-			if(n.left == null && n.right == null){
-				n.height = 0;
-			}
-			else if(n.left == null){
-				n.height = n.right.height + 1;
-			}
-			else if(n.right == null){
-				n.height = n.left.height + 1;
-			}
-			else if(n.left > n.right){
-				n.height = (n.left.height - n.right.height) + 1;
-			}
-			else{
-				n.height = (n.left.height - n.right.height) + 1;
-			}
-			
-			if(temp1.left == null && temp1.right == null){
-				temp1.height = 0;
-			}
-			else if(temp1.left == null){
-				temp1.height = temp1.right.height + 1;
-			}
-			else if(temp1.right == null){
-				temp1.height = temp1.left.height + 1;
-			}
-			else if(temp1.left > temp1.right){
-				temp1.height = (temp1.left.height - temp1.right.height) + 1;
-			}
-			else{
-				temp1.height = (temp1.right.height - temp1.left.height) + 1;
-			}
+			leftRotationHelper(n);
 		}
-			//left rotation
-			Node temp1 = n.left;
-			Node temp2 = n.right;
-			temp2.left = n;
-			n.right = temp1;
-			
-			if(n.left == null && n.right == null){
-				n.height = 0;
-			}
-			else if(n.left == null){
-				n.height = n.right.height + 1;
-			}
-			else if(n.right == null){
-				n.height = n.left.height + 1;
-			}
-			else if(n.left > n.right){
-				n.height = (n.left.height - n.right.height) + 1;
-			}
-			else{
-				n.height = (n.left.height - n.right.height) + 1;
-			}
-			
-			if(temp1.left == null && temp1.right == null){
-				temp1.height = 0;
-			}
-			else if(temp1.left == null){
-				temp1.height = temp1.right.height + 1;
-			}
-			else if(temp1.right == null){
-				temp1.height = temp1.left.height + 1;
-			}
-			else if(temp1.left > temp1.right){
-				temp1.height = (temp1.left.height - temp1.right.height) + 1;
-			}
-			else{
-				temp1.height = (temp1.left.height - temp1.right.height) + 1;
-			}
 			
 		//Right Left
 		else if(bal < -1 $$ d < n.right.data){
-			return RL(n);
 			//right rotation
-			Node temp3 = n.left;
-			Node temp4 = n.right;
-			temp3.right = n;
-			n.left = temp4;
-			
-			if(n.left == null && n.right == null){
-				n.height = 0;
-			}
-			else if(n.left == null){
-				n.height = n.right.height + 1;
-			}
-			else if(n.right == null){
-				n.height = n.left.height + 1;
-			}
-			else if(n.left > n.right){
-				n.height = (n.left.height - n.right.height) + 1;
-			}
-			else{
-				n.height = (n.left.height - n.right.height) + 1;
-			}
-			
-			if(temp3.left == null && temp3.right == null){
-				t1.height = 0;
-			}
-			else if(temp3.left == null){
-				temp3.height = temp3.right.height + 1;
-			}
-			else if(temp3.right == null){
-				temp3.height = temp3.left.height + 1;
-			}
-			else if(temp3.left > temp3.right){
-				temp3.height = (temp3.left.height - temp3.right.height) + 1;
-			}
-			else{
-				temp3.height = (temp3.right.height - temp3.left.height) + 1;
-			}
+			rightRotationHelper(n);
 			//left rotation
-			Node temp5 = n.left;
-			Node temp6 = n.right;
-			temp5.left = n;
-			n.right = temp6;
-			
-			if(n.left == null && n.right == null){
-				n.height = 0;
-			}
-			else if(n.left == null){
-				n.height = n.right.height + 1;
-			}
-			else if(n.right == null){
-				n.height = n.left.height + 1;
-			}
-			else if(n.left > n.right){
-				n.height = (n.left.height - n.right.height) + 1;
-			}
-			else{
-				n.height = (n.left.height - n.right.height) + 1;
-			}
-			
-			if(temp5.left == null && temp5.right == null){
-				temp5.height = 0;
-			}
-			else if(temp5.left == null){
-				temp5.height = temp5.right.height + 1;
-			}
-			else if(temp5.right == null){
-				temp5.height = temp5.left.height + 1;
-			}
-			else if(temp5.left > temp5.right){
-				temp5.height = (temp5.left.height - temp5.right.height) + 1;
-			}
-			else{
-				temp5.height = (temp5.right.height - temp5.left.height) + 1;
-			}
+			leftRotationHelper(n);
 		}
 		//Left Left
 		else if(bal > 1 && d < n.left.data){
 			//right rotation
-			Node t1 = n.left;
-			Node t2 = n.right;
-			t1.right = n;
-			n.left = t2;
-			
-			if(n.left == null && n.right == null){
-				n.height = 0;
-			}
-			else if(n.left == null){
-				n.height = n.right.height + 1;
-			}
-			else if(n.right == null){
-				n.height = n.left.height + 1;
-			}
-			else if(n.left > n.right){
-				n.height = (n.left.height - n.right.height) + 1;
-			}
-			else{
-				n.height = (n.left.height - n.right.height) + 1;
-			}
-			
-			if(t1.left == null && t1.right == null){
-				t1.height = 0;
-			}
-			else if(t1.left == null){
-				t1.height = t1.right.height + 1;
-			}
-			else if(t1.right == null){
-				t1.height = t1.left.height + 1;
-			}
-			else if(t1.left > t1.right){
-				t1.height = (t1.left.height - t1.right.height) + 1;
-			}
-			else{
-				t1.height = (t1.right.height - t1.left.height) + 1;
-			}
+			rightRotationHelper(n);
 		}
 		//Left Right
 		else{
 			//left rotation
-			Node t3 = n.left;
-			Node t4 = n.right;
-			t4.left = n;
-			n.right = t3;
-			
-			if(n.left == null && n.right == null){
-				n.height = 0;
-			}
-			else if(n.left == null){
-				n.height = n.right.height + 1;
-			}
-			else if(n.right == null){
-				n.height = n.left.height + 1;
-			}
-			else if(n.left > n.right){
-				n.height = (n.left.height - n.right.height) + 1;
-			}
-			else{
-				n.height = (n.left.height - n.right.height) + 1;
-			}
-			
-			if(t3.left == null && t3.right == null){
-				t3.height = 0;
-			}
-			else if(t3.left == null){
-				t3.height = t3.right.height + 1;
-			}
-			else if(t3.right == null){
-				t3.height = t3.left.height + 1;
-			}
-			else if(t3.left > t3.right){
-				t3.height = (t3.left.height - t3.right.height) + 1;
-			}
-			else{
-				t3.height = (t3.right.height - t3.left.height) + 1;
-			}
-			
+			leftRotationHelper(n);
 			//right rotation
-			Node t5 = n.left;
-			Node t6 = n.right;
-			t5.right = n;
-			n.left = t6;
-			
-			if(n.left == null && n.right == null){
-				n.height = 0;
-			}
-			else if(n.left == null){
-				n.height = n.right.height + 1;
-			}
-			else if(n.right == null){
-				n.height = n.left.height + 1;
-			}
-			else if(n.left > n.right){
-				n.height = (n.left.height - n.right.height) + 1;
-			}
-			else{
-				n.height = (n.left.height - n.right.height) + 1;
-			}
-			
-			if(t5.left == null && t5.right == null){
-				t5.height = 0;
-			}
-			else if(t5.left == null){
-				t5.height = t5.right.height + 1;
-			}
-			else if(t5.right == null){
-				t5.height = t5.left.height + 1;
-			}
-			else if(t5.left > t5.right){
-				t5.height = (t5.left.height - t5.right.height) + 1;
-			}
-			else{
-				t5.height = (t5.right.height - t5.left.height) + 1;
-			}
+			rightRotationHelper(n);
 		}
 	}
 	
@@ -419,279 +248,30 @@ class iterativeAVLTree{
 				bal = n.right.height - n.left.height;
 			}
 		}
-		
 		//Right Right
 		if(bal < -1 && d > n.right.data){
 			//left rotation
-			Node temp1 = n.left;
-			Node temp2 = n.right;
-			temp2.left = n;
-			n.right = temp1;
-			
-			if(n.left == null && n.right == null){
-				n.height = 0;
-			}
-			else if(n.left == null){
-				n.height = n.right.height + 1;
-			}
-			else if(n.right == null){
-				n.height = n.left.height + 1;
-			}
-			else if(n.left > n.right){
-				n.height = (n.left.height - n.right.height) + 1;
-			}
-			else{
-				n.height = (n.left.height - n.right.height) + 1;
-			}
-			
-			if(temp1.left == null && temp1.right == null){
-				temp1.height = 0;
-			}
-			else if(temp1.left == null){
-				temp1.height = temp1.right.height + 1;
-			}
-			else if(temp1.right == null){
-				temp1.height = temp1.left.height + 1;
-			}
-			else if(temp1.left > temp1.right){
-				temp1.height = (temp1.left.height - temp1.right.height) + 1;
-			}
-			else{
-				temp1.height = (temp1.right.height - temp1.left.height) + 1;
-			}
+			leftRotationHelper(n);
 		}
-			//left rotation
-			Node temp1 = n.left;
-			Node temp2 = n.right;
-			temp2.left = n;
-			n.right = temp1;
 			
-			if(n.left == null && n.right == null){
-				n.height = 0;
-			}
-			else if(n.left == null){
-				n.height = n.right.height + 1;
-			}
-			else if(n.right == null){
-				n.height = n.left.height + 1;
-			}
-			else if(n.left > n.right){
-				n.height = (n.left.height - n.right.height) + 1;
-			}
-			else{
-				n.height = (n.left.height - n.right.height) + 1;
-			}
-			
-			if(temp1.left == null && temp1.right == null){
-				temp1.height = 0;
-			}
-			else if(temp1.left == null){
-				temp1.height = temp1.right.height + 1;
-			}
-			else if(temp1.right == null){
-				temp1.height = temp1.left.height + 1;
-			}
-			else if(temp1.left > temp1.right){
-				temp1.height = (temp1.left.height - temp1.right.height) + 1;
-			}
-			else{
-				temp1.height = (temp1.left.height - temp1.right.height) + 1;
-			}
 		//Right Left
 		else if(bal < -1 $$ d < n.right.data){
-			return RL(n);
 			//right rotation
-			Node temp3 = n.left;
-			Node temp4 = n.right;
-			temp3.right = n;
-			n.left = temp4;
-			
-			if(n.left == null && n.right == null){
-				n.height = 0;
-			}
-			else if(n.left == null){
-				n.height = n.right.height + 1;
-			}
-			else if(n.right == null){
-				n.height = n.left.height + 1;
-			}
-			else if(n.left > n.right){
-				n.height = (n.left.height - n.right.height) + 1;
-			}
-			else{
-				n.height = (n.left.height - n.right.height) + 1;
-			}
-			
-			if(temp3.left == null && temp3.right == null){
-				t1.height = 0;
-			}
-			else if(temp3.left == null){
-				temp3.height = temp3.right.height + 1;
-			}
-			else if(temp3.right == null){
-				temp3.height = temp3.left.height + 1;
-			}
-			else if(temp3.left > temp3.right){
-				temp3.height = (temp3.left.height - temp3.right.height) + 1;
-			}
-			else{
-				temp3.height = (temp3.right.height - temp3.left.height) + 1;
-			}
+			rightRotationHelper(n);
 			//left rotation
-			Node temp5 = n.left;
-			Node temp6 = n.right;
-			temp5.left = n;
-			n.right = temp6;
-			
-			if(n.left == null && n.right == null){
-				n.height = 0;
-			}
-			else if(n.left == null){
-				n.height = n.right.height + 1;
-			}
-			else if(n.right == null){
-				n.height = n.left.height + 1;
-			}
-			else if(n.left > n.right){
-				n.height = (n.left.height - n.right.height) + 1;
-			}
-			else{
-				n.height = (n.left.height - n.right.height) + 1;
-			}
-			
-			if(temp5.left == null && temp5.right == null){
-				temp5.height = 0;
-			}
-			else if(temp5.left == null){
-				temp5.height = temp5.right.height + 1;
-			}
-			else if(temp5.right == null){
-				temp5.height = temp5.left.height + 1;
-			}
-			else if(temp5.left > temp5.right){
-				temp5.height = (temp5.left.height - temp5.right.height) + 1;
-			}
-			else{
-				temp5.height = (temp5.right.height - temp5.left.height) + 1;
-			}
+			leftRotationHelper(n);
 		}
 		//Left Left
 		else if(bal > 1 && d < n.left.data){
 			//right rotation
-			Node t1 = n.left;
-			Node t2 = n.right;
-			t1.right = n;
-			n.left = t2;
-			
-			if(n.left == null && n.right == null){
-				n.height = 0;
-			}
-			else if(n.left == null){
-				n.height = n.right.height + 1;
-			}
-			else if(n.right == null){
-				n.height = n.left.height + 1;
-			}
-			else if(n.left > n.right){
-				n.height = (n.left.height - n.right.height) + 1;
-			}
-			else{
-				n.height = (n.left.height - n.right.height) + 1;
-			}
-			
-			if(t1.left == null && t1.right == null){
-				t1.height = 0;
-			}
-			else if(t1.left == null){
-				t1.height = t1.right.height + 1;
-			}
-			else if(t1.right == null){
-				t1.height = t1.left.height + 1;
-			}
-			else if(t1.left > t1.right){
-				t1.height = (t1.left.height - t1.right.height) + 1;
-			}
-			else{
-				t1.height = (t1.right.height - t1.left.height) + 1;
-			}
+			rightRotationHelper(n);
 		}
 		//Left Right
 		else{
 			//left rotation
-			Node t3 = n.left;
-			Node t4 = n.right;
-			t4.left = n;
-			n.right = t3;
-			
-			if(n.left == null && n.right == null){
-				n.height = 0;
-			}
-			else if(n.left == null){
-				n.height = n.right.height + 1;
-			}
-			else if(n.right == null){
-				n.height = n.left.height + 1;
-			}
-			else if(n.left > n.right){
-				n.height = (n.left.height - n.right.height) + 1;
-			}
-			else{
-				n.height = (n.left.height - n.right.height) + 1;
-			}
-			
-			if(t3.left == null && t3.right == null){
-				t3.height = 0;
-			}
-			else if(t3.left == null){
-				t3.height = t3.right.height + 1;
-			}
-			else if(t3.right == null){
-				t3.height = t3.left.height + 1;
-			}
-			else if(t3.left > t3.right){
-				t3.height = (t3.left.height - t3.right.height) + 1;
-			}
-			else{
-				t3.height = (t3.right.height - t3.left.height) + 1;
-			}
-			
+			leftRotationHelper(n);
 			//right rotation
-			Node t5 = n.left;
-			Node t6 = n.right;
-			t5.right = n;
-			n.left = t6;
-			
-			if(n.left == null && n.right == null){
-				n.height = 0;
-			}
-			else if(n.left == null){
-				n.height = n.right.height + 1;
-			}
-			else if(n.right == null){
-				n.height = n.left.height + 1;
-			}
-			else if(n.left > n.right){
-				n.height = (n.left.height - n.right.height) + 1;
-			}
-			else{
-				n.height = (n.left.height - n.right.height) + 1;
-			}
-			
-			if(t5.left == null && t5.right == null){
-				t5.height = 0;
-			}
-			else if(t5.left == null){
-				t5.height = t5.right.height + 1;
-			}
-			else if(t5.right == null){
-				t5.height = t5.left.height + 1;
-			}
-			else if(t5.left > t5.right){
-				t5.height = (t5.left.height - t5.right.height) + 1;
-			}
-			else{
-				t5.height = (t5.right.height - t5.left.height) + 1;
-			}
+			rightRotationHelper(n);
 		}
 	}
 	
