@@ -18,6 +18,6 @@ class Node{
 		newnode.left = null;
 		newnode.height = 0;
 		
-		return newnode
+		return newnode;
 	}
 }
