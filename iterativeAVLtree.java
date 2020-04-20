@@ -25,7 +25,7 @@ class Node{
 
 
 class iterativeAVLTree{
-	int b;
+	int bal;
 	Node root;
 	
 	static Node insertIter(Node n, int d){
@@ -67,28 +67,28 @@ class iterativeAVLTree{
 
 		if(n.left == null and n.right == null){
 			n.height = 0;
-			b = 0;
+			bal = 0;
 		}
 		else if(n.right == null){
 			n.height = n.left.height + 1;
-			b = n.left.height;
+			bal = n.left.height;
 			}
 		else if(n.left == null){
 			n.height = n.right.height + 1;
-			b = n.right.height;
+			bal = n.right.height;
 		}
 		else{
 			if(n.left.height > n.right.height){
 				n.height = n.left.height + 1;
-			b = n.left.height - n.right.height;
+			bal = n.left.height - n.right.height;
 			}
 			else{
 				n.height = n.right.height + 1;
-				b = n.right.height - n.left.height;
+				bal = n.right.height - n.left.height;
 			}
 		}
 		//Right Right
-		if(b < -1 && d > n.right.data){
+		if(bal < -1 && d > n.right.data){
 			//left rotation
 			Node temp1 = n.left;
 			Node temp2 = n.right;
@@ -166,7 +166,7 @@ class iterativeAVLTree{
 			}
 			
 		//Right Left
-		else if(b < -1 $$ d < n.right.data){
+		else if(bal < -1 $$ d < n.right.data){
 			return RL(n);
 			//right rotation
 			Node temp3 = n.left;
@@ -244,7 +244,7 @@ class iterativeAVLTree{
 			}
 		}
 		//Left Left
-		else if(b > 1 && d < n.left.data){
+		else if(bal > 1 && d < n.left.data){
 			//right rotation
 			Node t1 = n.left;
 			Node t2 = n.right;
@@ -399,29 +399,29 @@ class iterativeAVLTree{
 		
 		if(n.left == null and n.right == null){
 			n.height = 0;
-			b = 0;
+			bal = 0;
 		}
 		else if(n.right == null){
 			n.height = n.left.height + 1;
-			b = n.left.height;
+			bal = n.left.height;
 			}
 		else if(n.left == null){
 			n.height = n.right.height + 1;
-			b = n.right.height;
+			bal = n.right.height;
 		}
 		else{
 			if(n.left.height > n.right.height){
 				n.height = n.left.height + 1;
-			b = n.left.height - n.right.height;
+			bal = n.left.height - n.right.height;
 			}
 			else{
 				n.height = n.right.height + 1;
-				b = n.right.height - n.left.height;
+				bal = n.right.height - n.left.height;
 			}
 		}
 		
 		//Right Right
-		if(b < -1 && d > n.right.data){
+		if(bal < -1 && d > n.right.data){
 			//left rotation
 			Node temp1 = n.left;
 			Node temp2 = n.right;
@@ -498,7 +498,7 @@ class iterativeAVLTree{
 				temp1.height = (temp1.left.height - temp1.right.height) + 1;
 			}
 		//Right Left
-		else if(b < -1 $$ d < n.right.data){
+		else if(bal < -1 $$ d < n.right.data){
 			return RL(n);
 			//right rotation
 			Node temp3 = n.left;
@@ -576,7 +576,7 @@ class iterativeAVLTree{
 			}
 		}
 		//Left Left
-		else if(b > 1 && d < n.left.data){
+		else if(bal > 1 && d < n.left.data){
 			//right rotation
 			Node t1 = n.left;
 			Node t2 = n.right;
