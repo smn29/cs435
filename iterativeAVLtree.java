@@ -4,7 +4,7 @@ import java.util.*
 class Node{
 	//node method
 	static class Node {
-		int el;
+		int data;
 		int height;
 		Node right;
 		Node left;
@@ -14,7 +14,7 @@ class Node{
 	static class new_node(int val){
 		int newnode = new Node();
 		
-		newnode.el = val;
+		newnode.data = val;
 		newnode.right = null;
 		newnode.left = null;
 		newnode.height = 0;
@@ -28,19 +28,19 @@ class iterativeAVLTree{
 	int b;
 	Node root;
 	
-	static Node insertIter(Node n, int el){
+	static Node insertIter(Node n, int d){
 		if(n == null){
-			n = new_node(el);
+			n = new_node(d);
 		}
 
-		if(el < n.el){
+		if(d < n.data){
 			//while root isn't null
 			while(!(root == null)){
 				//if the value in the node is less than the value in the root
 				//and the root's left child is null
-				if(n.el < root.el && rt.left == null){
+				if(n.data < root.data && rt.left == null){
 					//change node to be left child
-					root.left = n.el;
+					root.left = n.data;
 				}
 				else{
 					//change root to new node to look at
@@ -54,9 +54,9 @@ class iterativeAVLTree{
 			while(!(root == null)){
 				//if the value in the node is greater than the value in the root
 				//and the root's right child is null
-				if(n.el > root.el && rt.right == null){
+				if(n.data > root.data && rt.right == null){
 					//change node to be left child
-					root.left = n.el;
+					root.left = n.data;
 				}
 				else{
 					//change root to new node to look at
@@ -88,7 +88,7 @@ class iterativeAVLTree{
 			}
 		}
 		//Right Right
-		if(b < -1 && el > n.right.el){
+		if(b < -1 && d > n.right.data){
 			//left rotation
 			Node temp1 = n.left;
 			Node temp2 = n.right;
@@ -166,7 +166,7 @@ class iterativeAVLTree{
 			}
 			
 		//Right Left
-		else if(b < -1 $$ el < n.right.el){
+		else if(b < -1 $$ d < n.right.data){
 			return RL(n);
 			//right rotation
 			Node temp3 = n.left;
@@ -244,7 +244,7 @@ class iterativeAVLTree{
 			}
 		}
 		//Left Left
-		else if(b > 1 && el < n.left.el){
+		else if(b > 1 && d < n.left.data){
 			//right rotation
 			Node t1 = n.left;
 			Node t2 = n.right;
@@ -367,7 +367,7 @@ class iterativeAVLTree{
 		Node rt = root;
 		Node newnode = new_node(x);
 		while(rt != null){
-			if(y < rt.el){
+			if(y < rt.data){
 				if(rt.left != null){
 					rt = rt.left;
 				}
@@ -421,7 +421,7 @@ class iterativeAVLTree{
 		}
 		
 		//Right Right
-		if(b < -1 && el > n.right.el){
+		if(b < -1 && d > n.right.data){
 			//left rotation
 			Node temp1 = n.left;
 			Node temp2 = n.right;
@@ -498,7 +498,7 @@ class iterativeAVLTree{
 				temp1.height = (temp1.left.height - temp1.right.height) + 1;
 			}
 		//Right Left
-		else if(b < -1 $$ el < n.right.el){
+		else if(b < -1 $$ d < n.right.data){
 			return RL(n);
 			//right rotation
 			Node temp3 = n.left;
@@ -576,7 +576,7 @@ class iterativeAVLTree{
 			}
 		}
 		//Left Left
-		else if(b > 1 && el < n.left.el){
+		else if(b > 1 && d < n.left.data){
 			//right rotation
 			Node t1 = n.left;
 			Node t2 = n.right;
@@ -697,7 +697,6 @@ class iterativeAVLTree{
 	
 	static Node findNextIter(Node n){
 		int next = 0;
-		int max = 0;
 		Node rt = root;
 		//If (empty tree)
 		if(rt == null){
@@ -708,18 +707,15 @@ class iterativeAVLTree{
 		//Else if (no children)
 		else if(rt.left == null && rt.right == null){
 			//Return root
-			return rt.el;
+			return rt.data;
 		}
 
 		//Else
 		else{
 			//While (right child exists)
-			while(!(n.right == null)){
-				//Set next equal to maximum
-				max = next;
-				//Set maximum equal to right child
-				next = n.right.el;
-				n = n.right;
+			if(n.right != null){
+				next = n.right.data;
+				}
 			}
 		//Return next
 		return next;
@@ -739,18 +735,16 @@ class iterativeAVLTree{
 		//Else if (no children)
 		else if(rt.left == null && rt.right == null){
 			//Return root
-			return rt.el;
+			return rt.data;
 		}
 
 		//Else
 		else{
 			//While (left child exists)
-			while(!(n.left == null)){
+			if(n.left != null){
 				//Set next equal to minimum 
-				prev = min;
-				//Set minimum equal to right child
-				min = n.left.el;
-				n = n.left;
+				prev = n.left.data;
+				}
 			}
 		//Return prev
 		return prev;
@@ -768,7 +762,7 @@ class iterativeAVLTree{
 		//Else if (no children)
 		else if(rt.left == null && rt.right == null){
 			//Return root
-			min = rt.el;
+			min = rt.data;
 			return min;
 		}
 		//Else
@@ -776,7 +770,7 @@ class iterativeAVLTree{
 			//While (left child exists)
 			while(!(rt.left == null)){
 				//Set minimum equal to right child
-				min = rt.left.el;
+				min = rt.left.data;
 				rt = rt.left;
 			}
 		//Return min
@@ -796,7 +790,7 @@ class iterativeAVLTree{
 		//Else if (no children)
 		else if(rt.left == null && rt.right == null){
 			//Return root
-			max = rt.el;
+			max = rt.data;
 			return max;
 		}
 
@@ -805,7 +799,7 @@ class iterativeAVLTree{
 			//While (right child exists)
 			while(!(rt.right == null)){
 				//Set maximum equal to right child
-				max = rt.right.el;
+				max = rt.right.data;
 				rt = rt.right;
 			}
 			//Return next
