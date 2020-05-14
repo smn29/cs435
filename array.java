@@ -43,3 +43,4 @@ class solution{
 	}
 
 }
+/* 1. Clean code. No problems with this except it lacks portability, importing all general functions is considered bad practice. */
